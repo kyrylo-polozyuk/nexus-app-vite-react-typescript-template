@@ -1,6 +1,16 @@
 # Nexus App Template
 
-A React + TypeScript + Vite template for building browser-based apps that integrate with [Audiotool](https://new.audiotool.com/). This app participates in live sessions and can read/write projects in real time.
+A React + TypeScript + Vite template for building browser-based apps that integrate with [Audiotool](https://new.audiotool.com/). This app participates in live multiplayer DAW sessions and can read/write projects in real time.
+
+## What's included
+
+This template gives you a working foundation:
+
+- **Auth flow**: OAuth login via `useAuth` and `LoginScreen`. Users log in with their Audiotool account and authorize your app. The flow handles redirects, login state, and logout.
+
+- **Project selection**: Connect to an existing project or create a new one. `ProjectSelector` lets users paste a project URL, pick from their project list, or create an empty project. Project URL is synced with the browser URL for shareable links.
+
+- **SyncedDocument examples**: `ProjectSyncedComponent` shows how to work with the synced document: query entities (`t.entities.ofTypes()`), create entities (`t.create()`), read field values, and use `nexus.modify()` for transactional edits. Use it as a starting point for your own logic.
 
 ## Audiotool Setup
 
@@ -23,10 +33,17 @@ If you don’t have one yet, sign up at [Audiotool Beta](https://beta.audiotool.
 
 ### 3. Configure the app
 
-Edit `src/hooks/useAuth.ts` and replace `YOUR_CLIENT_ID` with your Client ID:
+Copy `.env.example` to `.env` and set your credentials:
 
-```ts
-const CLIENT_ID = "your-actual-client-id-from-dashboard"
+```bash
+cp .env.example .env
+```
+
+Edit `.env`:
+
+```
+VITE_CLIENT_ID=your-actual-client-id-from-dashboard
+VITE_REDIRECT_URL=http://127.0.0.1:5173/
 ```
 
 ### 4. Run the app

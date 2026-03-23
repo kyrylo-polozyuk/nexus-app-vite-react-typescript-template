@@ -21,6 +21,7 @@ export const ProjectList = ({
 }: ProjectListProps) => {
   const [projects, setProjects] = useState<ProjectListItemType[]>([])
   const [nextPageToken, setNextPageToken] = useState<string>("")
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetchProjects()
@@ -30,6 +31,7 @@ export const ProjectList = ({
   const fetchProjects = async (pageToken: string = "") => {
     if (!client) return
 
+    if (pageToken === "") setLoading(true)
     try {
       const request = {
         pageSize: 10,
@@ -66,6 +68,8 @@ export const ProjectList = ({
     } catch (e) {
       console.error("Failed to fetch projects:", e)
       // Don't set error state here as it might interfere with connection errors
+    } finally {
+      if (pageToken === "") setLoading(false)
     }
   }
 
@@ -99,6 +103,8 @@ export const ProjectList = ({
             </button>
           </div>
         </>
+      ) : loading ? (
+        <p>Loading projects...</p>
       ) : (
         <p className="secondary-text">No projects found</p>
       )}

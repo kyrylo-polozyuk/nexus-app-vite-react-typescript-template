@@ -1,18 +1,26 @@
 button {
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  background: #e5e5e5;
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text);
   display: flex;
-  gap: 4px;
+  gap: 6px;
   align-items: center;
+  border-radius: 4px;
+  font-size: 0.9rem;
 }
 
-button:hover {
-  background: #d5d5d5;
+button:hover:not(:disabled) {
+  background: var(--bg-hover);
 }
 
 button:disabled {
   opacity: 0.5;
+}
+
+button.loading {
+  opacity: 0.7;
+  cursor: wait;
 }
 
 button.hug {
@@ -20,9 +28,16 @@ button.hug {
 }
 
 button.primary {
-  background: #d0d0d0;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
 }
 
-button.primary:hover {
-  background: #c0c0c0;
+button.primary:hover:not(:disabled) {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+button.secondary {
+  background: transparent;
 }

@@ -5,9 +5,8 @@ import {
   type SyncedDocument,
 } from "@audiotool/nexus"
 import { useCallback, useEffect, useState } from "react"
+import { extractProjectId } from "../url-utils"
 import { ProjectList } from "./ProjectList"
-import "./ProjectSelector.css"
-import { extractProjectId } from "./projectId"
 
 type ProjectSelectorProps = {
   loginStatus: LoginStatus | undefined
@@ -145,9 +144,9 @@ export const ProjectSelector = ({
   }
 
   return (
-    <div className="column grow center project-selector-container">
+    <div className="column grow center">
       <h2>Connect to a Project</h2>
-      <blockquote className="project-selector-intro">
+      <blockquote>
         To use this app, you need to connect it to an Audiotool project. An
         empty project is recommended for the best experience.
       </blockquote>

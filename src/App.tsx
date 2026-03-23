@@ -6,9 +6,13 @@ import { ErrorBoundary } from "./ErrorBoundary"
 import { ErrorHandler } from "./ErrorHandler"
 import { useAuth } from "./hooks/useAuth"
 import { LoginScreen } from "./LoginScreen"
-import { extractProjectId } from "./project-selector/projectId"
 import { ProjectSelector } from "./project-selector/ProjectSelector"
 import { ProjectSyncedComponent } from "./ProjectSyncedComponent"
+import {
+  AUDIOTOOL_STUDIO_BASE,
+  extractProjectId,
+  openAudiotoolInWindow,
+} from "./url-utils"
 
 export const App = () => {
   const { loginStatus, authStatus, loading, authError } = useAuth()
@@ -122,9 +126,8 @@ export const App = () => {
                         className="hug"
                         onClick={() => {
                           const projectId = extractProjectId(projectUrl)
-                          window.open(
-                            `https://beta.audiotool.com/studio?project=${projectId}`,
-                            "_blank",
+                          openAudiotoolInWindow(
+                            `${AUDIOTOOL_STUDIO_BASE}${projectId}`,
                           )
                         }}
                       >

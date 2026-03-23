@@ -1,7 +1,12 @@
 .project-list-item {
   border: none;
-  border-radius: 0;
+  border-radius: 4px;
   width: 100%;
-  background: none;
-  min-height: 32px;
+  background: var(--bg-elevated);
+  min-height: 36px;
+  color: var(--text);
+
+  &:hover:not(:disabled) {
+    background: var(--bg-hover);
+  }
 }

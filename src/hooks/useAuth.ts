@@ -1,9 +1,9 @@
 import { getLoginStatus, type LoginStatus } from "@audiotool/nexus"
 import { useEffect, useRef, useState } from "react"
 
-// OIDC Configuration
-const CLIENT_ID = "YOUR_CLIENT_ID"
-const REDIRECT_URL = "http://127.0.0.1:5173/"
+// OIDC Configuration - set VITE_CLIENT_ID and VITE_REDIRECT_URL in .env
+const CLIENT_ID = import.meta.env.VITE_CLIENT_ID as string
+const REDIRECT_URL = import.meta.env.VITE_REDIRECT_URL as string
 const SCOPE = "project:write"
 
 export type AuthStatus = "checking" | "logged-out" | "logged-in"
